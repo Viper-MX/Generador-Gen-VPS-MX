@@ -56,7 +56,7 @@ SEMCOR='\e[0m'
   -azu)cor="${COLOR[6]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd)cor="${COLOR[2]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";;
-  "-bar2"|"-bar")cor="${COLOR[1]}=====================================================" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  "-bar2"|"-bar")cor="${COLOR[1]}\1;33m=====================================================" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
 
@@ -86,16 +86,16 @@ export -f fun_ip
 clear
 #########VISUALIZACION DE MENU
 msg -bar
-echo -e "\e[100;1;33m        =====>>►► GENERADOR DE KEYS ◄◄<<=====         \033[1;37m"
+echo -e "\e[100;1;33m        =====>>►► 🌐 MASTER GEN 2020 🌐 ◄◄<<=====         \033[1;37m"
 msg -bar
 msg -ne "   S.O: " && echo -ne "\033[1;37m$(os_system)"
 msg -ne "       IP: " && echo -e "\033[1;37m$(meu_ipe)"
 echo -e "   \033[1;37mRAM: \033[1;32m$ram1                 \033[1;37mCPU: \033[1;32m $_core"
 echo -e "   \033[1;37mUSADA: \033[1;32m$ram3               \033[1;37mUSO DE CPU: \033[1;32m$_usop"
-echo -e "   \033[1;37mLIBRE: \033[1;32m$ram2               \033[1;37mFECHA: \033[1;37m⟦ $_fecha ⟧    "
+echo -e "   \033[1;37mLIBRE: \033[1;32m$ram2               \033[1;37mFECHA: \033[1;37m ⟦ $_fecha ⟧   "
 echo -e "   \033[1;37mUSO DE RAM: \033[1;32m$_usor      \033[1;37mHORA: \033[1;37m$_hora"
 
-[[ -e ${SCPT_DIR}/message.txt ]] && msg -bar && msg -bra " \033[1;37mMESSAGE RESELLER \033[1;32m➣➣ \033[1;96m $(cat ${SCPT_DIR}/message.txt) "
+[[ -e ${SCPT_DIR}/message.txt ]] && msg -bar && msg -bra " \033[1;37mMESSAGE RESELLER\033[1;32m➣➣ \033[1;96m $(cat ${SCPT_DIR}/message.txt) "
 msg -bar
 echo -e " \033[1;37mKEYS USADAS: \033[1;37m⟦ \033[1;32m$(cat $IVAR) \033[1;37m⟧   "
 msg -bar
@@ -105,7 +105,7 @@ msg -bar
 [[ ! -e ${SCPT_DIR} ]] && mkdir ${SCPT_DIR}
 INSTA_ARQUIVOS="ADMVPS.zip"
 DIR="/etc/http-shell"
-LIST="lista-arq"
+LIST="SPV_MDA"
 meu_ip () {
 MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MIP2=$(wget -qO- ipv4.icanhazip.com)
@@ -130,6 +130,7 @@ clear
 msg -bar
 echo -e "\033[1;33mPANEL GENERADOR DE KEYS \033[0m"
 msg -bar
+echo -e "\033[1;32m[x] -> \033[1;37mINSTALACIÓN GENERADOR DE KEYS\033[0m"
 echo -e "\033[1;32m[b] -> \033[1;37mINSTALACIÓN ADM-NEW\033[0m"
 msg -bar
 read -p "Seleccione los archivos a instalar: " readvalue
@@ -427,4 +428,4 @@ atualizar_geb
 elif [[ ${varread} = 7 ]]; then
 uninstal_master
 fi
-/usr/bin/gerar.sh
+/usr/bin/master.sh
