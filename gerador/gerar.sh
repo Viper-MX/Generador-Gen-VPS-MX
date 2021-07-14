@@ -367,29 +367,13 @@ echo -e "$BARRA"
 read -p "Enter"
 }
 uninstal_master () {
-clear
-echo -e "$BARRA"
-echo -e "\033[1;33m ⚠️ AVISO IMPORTANTE ⚠️     \033[0m"
-echo -e "\033[33mESTE PROCESO NO ES REVERSIBLE\033[0m"
-echo -e "$BARRA"
-echo -e "\033[37mDesea continuar?\033[0m"
-while [[ ${yesno} != @(s|S|y|Y|n|N) ]]; do
-read -p " [S/N]: " yesno
-tput cuu1 && tput dl1
-done
-if [[ ${yesno} = @(s|S|y|Y) ]]; then
-[[ ! -d ${SCPT_DIR} ]] && rm -rf ${SCPT_DIR}
-  rm -rf http-server.sh
-  rm -rf lista-arq
-  killall http-server.sh &>/dev/null
-rm -rf /bin/http-server.sh
-rm -rf /usr/bin/gerar.sh
-rm -rf /etc/http-instas
-rm -rf /etc/key-gerador
-else
-echo -e "\033[1;31mProcedimiento Cancelado\033[0m"
-echo -e "$barra"
-fi
+CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+
+[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/rudi9999/TeleBotGen/master/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
+
+source ${CIDdir}/confbot.sh
+
+bot_conf
 }
 meu_ip
 unset PID_GEN
